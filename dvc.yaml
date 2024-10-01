@@ -10,6 +10,6 @@ stages:
     cmd: python train.py
     deps:
       - train.py
-      - bikeshare_prepared.csv
+      - data/bikeshare_prepared.txt
     outs:
       - model.pkl
