@@ -4,8 +4,8 @@ import pandas as pd
 training_data = '../data/bikesharing/train/bikeshare_v2.0.txt'
 validation_data = '../data/bikesharing/validation/validation.txt'
 
-training_prepared = './prepared_data/bikeshare_prepared.txt'
-validation_prepared = './prepared_data/validation_prepared.txt'
+training_prepared = '../prepared_data/bikeshare_prepared.txt'
+validation_prepared = '../prepared_data/validation_prepared.txt'
 
 def data_cleaning(data_path, output_path):
     # Create a dataframe for cleaning
