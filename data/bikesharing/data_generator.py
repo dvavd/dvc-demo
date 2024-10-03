@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-bike = pd.read_csv('bikeshare_v2.0.txt')
+bike = pd.read_csv('train/bikeshare_v2.0.txt')
 
 # Calculate the ratio of casual/(casual+registered)
 bike['casual_ratio'] = bike['casual'] / bike['cnt']
