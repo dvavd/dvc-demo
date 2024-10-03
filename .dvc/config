@@ -2,3 +2,6 @@
     remote = gdrive_remote
 ['remote "gdrive_remote"']
     url = gdrive://1nwS0cuebPIGgrNYEdOC8v2ykgIi2ISKQ
+    gdrive_acknowledge_abuse = true
+    gdrive_client_id = ${GDRIVE_CLIENT_ID}
+    gdrive_client_secret = ${GDRIVE_CLIENT_SECRET}
