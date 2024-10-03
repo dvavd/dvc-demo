@@ -1,19 +1,33 @@
 import pandas as pd
 
-df = pd.read_csv('data/bikeshare.txt')
 
-# drop missing values
-initial_count = len(df)
-df.dropna(inplace=True)
-final_count = len(df)
-print(f"Number of rows dropped: {initial_count - final_count}")
+training_data = '../data/bikesharing/train/bikeshare_v2.0.txt'
+validation_data = '../data/bikesharing/validation/validation.txt'
 
+training_prepared = './prepared_data/bikeshare_prepared.txt'
+validation_prepared = './prepared_data/validation_prepared.txt'
 
-# convert the 'dteday' and 'hr' columns to a datetime object
-df['datetime'] = pd.to_datetime(df['dteday']) + pd.to_timedelta(df['hr'], unit='h')
-df.set_index('datetime', inplace=True)
+def data_cleaning(data_path, output_path):
+    # Create a dataframe for cleaning
+    df = pd.read_csv(data_path)
 
-# drop the unnecessary columns
-df = df.drop(columns=['instant', 'hr', 'yr','mnth','dteday'])
+    # Convert the 'dteday' and 'hr' columns to a datetime object
+    df['datetime'] = pd.to_datetime(df['dteday']) + pd.to_timedelta(df['hr'], unit='h')
+    df.set_index('datetime', inplace=True)
 
-df.to_csv('data/bikeshare_prepared.txt')
+    # Recover temperature data
+    df['temp'] = (df['temp'] * 41).round(2)
+
+    # Rename the columns
+    df = df.rename(columns={
+        'dteday': 'date',
+        'weathersit': 'weather'
+    })
+    # Drop the unnecessary columns
+    df = df.drop(columns=['instant', 'yr', 'mnth', 'hr', 'season', 'atemp', 'hum', 'windspeed'])
+
+    # Export data to path
+    df.to_csv(output_path)
+
+data_cleaning(training_data, training_prepared)
+data_cleaning(validation_data, validation_prepared)
