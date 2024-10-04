@@ -15,7 +15,7 @@ plt.rcParams['figure.dpi'] = 150
 plt.figure(figsize=(8,6))
 sns.set()
 
-bike = pd.read_csv('prepared_data/bikeshare_prepared.txt')
+bike = pd.read_csv('../data/bikesharing/train/bikeshare_prepared.txt')
 
 # Modify holiday, weekday, workingday, and weather state here
 factor_dict = {
@@ -53,7 +53,7 @@ for day_type in ['weekdays', 'weekends']:
     ysmooth = lowess(day_type_prop['prop_casual'], day_type_prop['temp'], return_sorted=False)
 
     # Plot the smoothed line
-    sns.lineplot(day_type_prop['temp'].to_numpy(), ysmooth, label=day_type)
+    sns.lineplot(x=day_type_prop['temp'].to_numpy(), y=ysmooth, label=day_type)
 # ==================================================================
 
 # Temperature Comparison Scatter Plot ==============================
@@ -65,7 +65,7 @@ for day_type in ['weekdays', 'weekends']:
     yobs = sampled_data ['prop_casual'].to_numpy()
 
     # Plot with sampled data points
-    sns.scatterplot(xobs, yobs, label="Raw Data")
+    sns.scatterplot(x=xobs, y=yobs, label="Raw Data")
 # ==================================================================
 
 
@@ -85,5 +85,5 @@ plt.xlabel("Rider Count")
 plt.legend()
 """
 
-plt.savefig('plot.png')
+plt.savefig('plots/plot.png')
 plt.show()
