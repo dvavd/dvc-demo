@@ -1,2 +1,2 @@
-/plot.png
-/prepared_data/
+/__pycache__/
+*.png
