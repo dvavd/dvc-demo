@@ -1,15 +1,13 @@
 stages:
   prepare:
-    cmd: python prepare.py
+    cmd: python demo/prepare.py ""
     deps:
-    - data/bikeshare.txt
-    - prepare.py
+    - data/bikesharing/train/bikeshare_v1.0.txt
+    - demo/prepare.py
     outs:
-    - data/bikeshare_prepared.txt
+    - data/bikesharing/train/bikeshare_prepared.txt
   train:
-    cmd: python train.py
+    cmd: python demo/train.py
     deps:
-      - train.py
-      - data/bikeshare_prepared.txt
-    outs:
-      - model.pkl
+    - data/bikesharing/train/bikeshare_prepared.txt
+    - demo/train.py

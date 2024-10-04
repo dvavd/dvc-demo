@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-bike = pd.read_csv('prepared_data/bikeshare_prepared.txt')
-test = pd.read_csv('prepared_data/validation_prepared.txt')
+bike = pd.read_csv('./data/bikesharing/train/bikeshare_prepared.txt')
+test = pd.read_csv('./data/bikesharing/validation/validation_prepared.txt')
 
 # Calculate the 'prop_casual'
 bike['prop_casual'] = bike['casual'] / bike['cnt']
@@ -41,4 +41,4 @@ plt.title('Linear Regression: Temperature vs Casual Rider Proportion')
 plt.ylabel('Proportion of Casual Riders')
 plt.xlabel('Temperature')
 plt.legend()
-plt.show()
+plt.savefig('./plots/model_plot.png')

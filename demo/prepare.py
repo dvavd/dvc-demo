@@ -1,11 +1,14 @@
 import pandas as pd
+import os
 
 
-training_data = '../data/bikesharing/train/bikeshare_v2.0.txt'
-validation_data = '../data/bikesharing/validation/validation.txt'
+print("Current working directory:", os.getcwd())
 
-training_prepared = '../prepared_data/bikeshare_prepared.txt'
-validation_prepared = '../prepared_data/validation_prepared.txt'
+training_data = './data/bikesharing/train/bikeshare_v2.0.txt'
+validation_data = './data/bikesharing/validation/validation.txt'
+
+training_prepared = './data/bikesharing/train/bikeshare_prepared.txt'
+validation_prepared = './data/bikesharing/validation/validation_prepared.txt'
 
 def data_cleaning(data_path, output_path):
     # Create a dataframe for cleaning
@@ -31,3 +34,5 @@ def data_cleaning(data_path, output_path):
 
 data_cleaning(training_data, training_prepared)
 data_cleaning(validation_data, validation_prepared)
+
+#plt.savefig('./plots/scatter_plot.png')

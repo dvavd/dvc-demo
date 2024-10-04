@@ -1,34 +1,29 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: python prepare.py
+    cmd: python demo/prepare.py ""
     deps:
-    - path: data/bikeshare.txt
+    - path: data/bikesharing/train/bikeshare_v1.0.txt
       hash: md5
-      md5: d50bd5a6f55131e72a7bedc334e2fce1
-      size: 1156736
-    - path: prepare.py
+      md5: 3dd8e0e9dcf8b65cacf78347b9e0df3d
+      size: 980793
+    - path: demo/prepare.py
       hash: md5
-      md5: 4a5eed14ff74058ee457919506d2b39e
-      size: 539
+      md5: 2470239e557474a71906b08faa8660d9
+      size: 1152
     outs:
-    - path: data/bikeshare_prepared.txt
+    - path: data/bikesharing/train/bikeshare_prepared.txt
       hash: md5
-      md5: 98ca3a2ec233888c7783eac3ff447288
-      size: 1088692
+      md5: c0c1560de65f61f519963426dfdef761
+      size: 943188
   train:
-    cmd: python train.py
+    cmd: python demo/train.py
     deps:
-    - path: data/bikeshare_prepared.txt
+    - path: data/bikesharing/train/bikeshare_prepared.txt
       hash: md5
-      md5: 98ca3a2ec233888c7783eac3ff447288
-      size: 1088692
-    - path: train.py
+      md5: c0c1560de65f61f519963426dfdef761
+      size: 943188
+    - path: demo/train.py
       hash: md5
-      md5: 617c6288807be2b4b303415cb68c6505
-      size: 267
-    outs:
-    - path: model.pkl
-      hash: md5
-      md5: eba044fdf71b57b9fb4611189f83baa9
-      size: 1169
+      md5: 1be1d210b2b796d6d8eba8f20a69ea11
+      size: 1340
